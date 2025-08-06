@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Te Amo Mariana Akemi</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: #222;
+        }
+        #love {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            font-size: 3em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            transition: color 0.5s;
+            padding: 20px 40px;
+            border-radius: 12px;
+            background: #fff2;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="love">te amo mariana akemi</div>
+    <script>
+        const love = document.getElementById('love');
+        let x = 100, y = 100;
+        let dx = 3, dy = 2;
+        function randomColor() {
+            return `hsl(${Math.floor(Math.random()*360)}, 80%, 60%)`;
+        }
+        function animate() {
+            const w = window.innerWidth - love.offsetWidth;
+            const h = window.innerHeight - love.offsetHeight;
+            x += dx;
+            y += dy;
+            if (x <= 0 || x >= w) {
+                dx = -dx;
+                love.style.color = randomColor();
+            }
+            if (y <= 0 || y >= h) {
+                dy = -dy;
+                love.style.color = randomColor();
+            }
+            love.style.left = x + "px";
+            love.style.top = y + "px";
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
